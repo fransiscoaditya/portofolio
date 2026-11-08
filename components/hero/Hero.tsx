@@ -7,7 +7,7 @@ import { ease } from "@/lib/motion";
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -41,7 +41,7 @@ export function Hero() {
         <div className="absolute inset-0 z-10 p-4 md:p-8 flex flex-col justify-between pointer-events-none">
           <div className="flex justify-between items-start w-full">
             {/* Top Left */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
@@ -49,10 +49,10 @@ export function Hero() {
             >
             </motion.div>
           </div>
-          
+
           <div className="flex justify-between items-end w-full">
             {/* Bottom Left */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
@@ -62,7 +62,7 @@ export function Hero() {
             </motion.div>
 
             {/* Bottom Center */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
@@ -72,7 +72,7 @@ export function Hero() {
             </motion.div>
 
             {/* Bottom Right */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
@@ -91,7 +91,7 @@ export function Hero() {
           <div className="relative flex items-center w-full max-w-[1600px]">
             {/* Left Half (A & D) */}
             <div className="flex-1 flex justify-between pr-4 md:pr-12">
-              <motion.span 
+              <motion.span
                 className="text-[30vw] md:text-[25vw] leading-none font-display text-[--foreground]"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export function Hero() {
               >
                 A
               </motion.span>
-              <motion.span 
+              <motion.span
                 className="text-[30vw] md:text-[25vw] leading-none font-display text-[--foreground] relative right-[1vw] md:right-[2vw] lg:right-[4vw]"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ export function Hero() {
             </div>
 
             {/* Javanese vertical text in the Absolute/Flex Center */}
-            <motion.div 
+            <motion.div
               className="shrink-0 flex flex-col items-center justify-center px-4 md:px-8"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -123,7 +123,7 @@ export function Hero() {
 
             {/* Right Half (I & T) */}
             <div className="flex-1 flex justify-between pl-4 md:pl-12">
-              <motion.span 
+              <motion.span
                 className="text-[30vw] md:text-[25vw] leading-none font-display text-[--foreground] relative left-[4vw] md:left-[8vw] lg:left-[12vw]"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -131,7 +131,7 @@ export function Hero() {
               >
                 I
               </motion.span>
-              <motion.span 
+              <motion.span
                 className="text-[30vw] md:text-[25vw] leading-none font-display text-[--foreground]"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}

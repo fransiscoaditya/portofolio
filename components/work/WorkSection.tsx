@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
@@ -21,6 +21,8 @@ const FILTERS: { key: FilterType; label: string }[] = [
   { key: "ALL", label: "ALL" },
   { key: "WEB", label: "WEB" },
   { key: "MOBILE", label: "MOBILE" },
+  { key: "SYSTEM", label: "SYSTEM" },
+  { key: "GAME", label: "GAME" },
 ];
 
 export function WorkSection() {
