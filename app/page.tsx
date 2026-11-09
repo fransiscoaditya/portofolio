@@ -1,14 +1,6 @@
 import { Hero } from "@/components/hero/Hero";
-import { WorkSection } from "@/components/work/WorkSection";
-import { 
-  IdentitySection, 
-  ExpertiseSection,
-  TechSection,
-  BooksSection,
-  ExperienceSection,
-  EducationSection,
-  CurrentlySection
-} from "@/components/info/InfoSection";
+import { IdentitySection } from "@/components/info/InfoSection";
+import { PageLinks } from "@/components/motion/PageLinks";
 import { Footer } from "@/components/footer/Footer";
 
 export default function HomePage() {
@@ -16,13 +8,7 @@ export default function HomePage() {
     <>
       <Hero />
       <IdentitySection />
-      <WorkSection />
-      <ExpertiseSection />
-      <TechSection />
-      <BooksSection />
-      <ExperienceSection />
-      <EducationSection />
-      <CurrentlySection />
+      <PageLinks />
       <Footer />
     </>
   );

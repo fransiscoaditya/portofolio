@@ -17,6 +17,7 @@ export function CustomCursor() {
   const springY = useSpring(y, { stiffness: 500, damping: 45 });
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
 
     // Only show on devices with fine pointer (mouse)

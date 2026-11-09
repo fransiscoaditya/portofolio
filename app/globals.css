@@ -3,8 +3,15 @@
    Design token system + typography + utilities
    ═══════════════════════════════════════════════════════════════ */
 
-/* ─── Google Fonts — must come before @import "tailwindcss" ─── */
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;1,400;1,500;1,600&family=Noto+Sans+Javanese:wght@400;700&display=swap");
+/* Fonts are self-hosted via next/font in app/layout.tsx */
+
+@font-face {
+  font-family: "Javanese Custom";
+  src: url("/fonts/JavaneseText.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @import "tailwindcss";
 
@@ -23,10 +30,11 @@
   --surface-hover: #27272a;
 
   /* Typography */
-  --font-display: "Anton", sans-serif;
-  --font-body: "Space Mono", monospace;
-  --font-accent: "Playfair Display", serif;
-  --font-javanese: "Noto Sans Javanese", sans-serif;
+  --font-display: var(--font-anton), "Impact", sans-serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-meta: var(--font-space-mono), ui-monospace, monospace;
+  --font-accent: "Playfair Display", Georgia, serif;
+  --font-javanese: "Javanese Custom", "Javanese Text", var(--font-noto-javanese), sans-serif;
 
   /* Type scale */
   --text-xs: clamp(0.6875rem, 0.65rem + 0.19vw, 0.75rem);
@@ -154,7 +162,7 @@ body {
   font-size: var(--text-hero);
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   line-height: 0.9;
   text-transform: uppercase;
 }
@@ -163,7 +171,7 @@ body {
   font-size: var(--text-4xl);
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   line-height: 0.92;
   text-transform: uppercase;
 }
@@ -172,7 +180,7 @@ body {
   font-size: var(--text-3xl);
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   line-height: 0.95;
   text-transform: uppercase;
 }
@@ -181,7 +189,7 @@ body {
   font-size: var(--text-2xl);
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.0;
   text-transform: uppercase;
 }
@@ -220,17 +228,33 @@ body {
   font-size: var(--text-sm);
   font-family: var(--font-body);
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.01em;
   color: var(--muted);
 }
 
 .text-metadata {
   font-size: var(--text-xs);
-  font-family: var(--font-body);
+  font-family: var(--font-meta);
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.text-body-sm {
+  font-size: var(--text-sm);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.text-display-sm {
+  font-size: var(--text-xl);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  text-transform: uppercase;
 }
 
 .text-javanese {
@@ -421,4 +445,54 @@ a {
   z-index: 9999;
   opacity: 0.06;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+
+/* ─── Accessibility: skip link ──────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 10000;
+  padding: 0.6rem 1rem;
+  background: var(--foreground);
+  color: var(--background);
+  font-family: var(--font-meta);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: translateY(-200%);
+  transition: transform var(--transition-base);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ─── Outlined display text (marquee) ───────────────────────────── */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border-light);
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Animated underline link ───────────────────────────────────── */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* ─── Mobile: keep native cursor, avoid fixed-position jank ─────── */
+@media (hover: none) {
+  .film-grain {
+    display: none;
+  }
 }

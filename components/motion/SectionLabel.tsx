@@ -28,6 +28,7 @@ export function SectionLabel({ latin, javanese, className }: SectionLabelProps) 
     if (!isInView) return;
 
     // Phase 1: Show Javanese
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPhase("javanese");
 
     // Phase 2: After 1.2s, transition to Latin

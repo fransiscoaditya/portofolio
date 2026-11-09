@@ -9,10 +9,10 @@ import {
   useSpring,
   AnimatePresence,
 } from "motion/react";
-import { projects, getProjectsByType, type Project, type ProjectType } from "@/content/projects";
+import { projects, type Project, type ProjectType } from "@/content/projects";
 import { javanese } from "@/content/javanese";
 import { SectionLabel } from "@/components/motion/SectionLabel";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { ease } from "@/lib/motion";
 
 type FilterType = "ALL" | ProjectType;
@@ -25,7 +25,7 @@ const FILTERS: { key: FilterType; label: string }[] = [
   { key: "GAME", label: "GAME" },
 ];
 
-export function WorkSection() {
+export function WorkSection({ showHeader = true }: { showHeader?: boolean }) {
   const [activeFilter, setActiveFilter] = useState<FilterType>("ALL");
 
   const filtered = activeFilter === "ALL"
@@ -39,8 +39,9 @@ export function WorkSection() {
       aria-labelledby="work-heading"
     >
       <div className="container-editorial">
-        {/* Section header */}
-        <div className="flex items-end justify-between mb-8 md:mb-12 pb-4 border-b border-[--border]">
+        {showHeader && (
+          <>
+          <div className="flex items-end justify-between mb-8 md:mb-12 pb-4 border-b border-(--border)">
           <div>
             <SectionLabel
               latin="SELECTED WORK"
@@ -56,11 +57,13 @@ export function WorkSection() {
           </div>
           <Link
             href="/work"
-            className="text-metadata text-[--muted] hover:text-[--foreground] transition-colors hidden md:block"
+            className="text-metadata text-(--muted) hover:text-(--foreground) transition-colors hidden md:block"
           >
             ALL PROJECTS →
           </Link>
         </div>
+          </>
+        )}
 
         {/* Filter bar */}
         <div className="flex items-center gap-6 mb-12 md:mb-16" role="tablist" aria-label="Filter project">
@@ -72,21 +75,21 @@ export function WorkSection() {
               onClick={() => setActiveFilter(f.key)}
               className={`text-metadata tracking-[0.2em] pb-1 transition-colors relative ${
                 activeFilter === f.key
-                  ? "text-[--foreground]"
-                  : "text-[--muted] hover:text-[--foreground]"
+                  ? "text-(--foreground)"
+                  : "text-(--muted) hover:text-(--foreground)"
               }`}
             >
               {f.label}
               {activeFilter === f.key && (
                 <motion.span
                   layoutId="filter-indicator"
-                  className="absolute left-0 right-0 -bottom-0 h-[1px] bg-[--foreground]"
+                  className="absolute left-0 right-0 -bottom-0 h-[1px] bg-(--foreground)"
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
             </button>
           ))}
-          <span className="text-metadata text-[--muted] ml-auto opacity-50">
+          <span className="text-metadata text-(--muted) ml-auto opacity-50">
             {filtered.length} PROJECT{filtered.length !== 1 ? "S" : ""}
           </span>
         </div>
@@ -108,7 +111,7 @@ export function WorkSection() {
         <div className="mt-12 md:hidden">
           <Link
             href="/work"
-            className="text-metadata text-[--muted] hover:text-[--foreground] transition-colors"
+            className="text-metadata text-(--muted) hover:text-(--foreground) transition-colors"
           >
             ALL PROJECTS →
           </Link>
@@ -149,7 +152,7 @@ function ProjectList({ projects }: { projects: Project[] }) {
       <AnimatePresence>
         {hoveredProject && (
           <motion.div
-            className="pointer-events-none absolute z-[--z-above] hidden md:block"
+            className="pointer-events-none absolute z-(--z-above) hidden md:block"
             style={{ x: springX, y: springY }}
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -169,8 +172,8 @@ function ProjectList({ projects }: { projects: Project[] }) {
                   sizes="340px"
                 />
               ) : (
-                <div className="w-full h-full bg-[--surface] flex items-center justify-center">
-                  <span className="text-metadata text-[--muted]">
+                <div className="w-full h-full bg-(--surface) flex items-center justify-center">
+                  <span className="text-metadata text-(--muted)">
                     {hoveredProject.shortTitle ?? hoveredProject.title}
                   </span>
                 </div>
@@ -216,22 +219,22 @@ function ProjectItem({
     project.status === "LIVE"
       ? "text-[#c7a974]"
       : project.status === "IN DEVELOPMENT"
-      ? "text-[--muted]"
-      : "text-[--muted]";
+      ? "text-(--muted)"
+      : "text-(--muted)";
 
   return (
     <Link
       href={`/work/${project.slug}`}
       data-cursor="view"
       onMouseEnter={onMouseEnter}
-      className="group block border-b border-[--border] py-10 md:py-14 relative overflow-hidden"
+      className="group block border-b border-(--border) py-10 md:py-14 relative overflow-hidden"
       aria-label={`${project.title} — ${project.category} — ${project.year}`}
     >
       <div className="relative z-10">
         {/* Row 1: Index + Title + Year */}
         <div className="flex items-baseline gap-4 md:gap-8 mb-3">
           <motion.span
-            className="text-metadata text-[--muted] shrink-0 w-7"
+            className="text-metadata text-(--muted) shrink-0 w-7"
             animate={{ opacity: isHovered ? 1 : 0.4 }}
             transition={{ duration: 0.2 }}
           >
@@ -246,15 +249,28 @@ function ProjectItem({
             {project.title}
           </motion.h3>
 
-          <span className="text-metadata text-[--muted] shrink-0 hidden md:block">{project.year}</span>
+          <span className="text-metadata text-(--muted) shrink-0 hidden md:block">{project.year}</span>
         </div>
 
         {/* Row 2: Short description */}
         {project.shortDescription && (
           <div className="pl-11 md:pl-15 mb-5">
-            <p className="text-body-sm text-[--muted] max-w-xl">
+            <p className="text-body-sm text-(--muted) max-w-xl">
               {project.shortDescription}
             </p>
+          </div>
+        )}
+
+        {/* Mobile thumbnail (desktop uses cursor-follow preview) */}
+        {project.thumbnail && (
+          <div className="md:hidden relative aspect-[16/10] w-full mb-6 overflow-hidden border border-(--border)">
+            <Image
+              src={project.thumbnail}
+              alt={`Tampilan ${project.title}`}
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
           </div>
         )}
 
@@ -262,24 +278,24 @@ function ProjectItem({
         <div className="pl-11 md:pl-15 grid grid-cols-2 md:grid-cols-4 gap-4">
           {/* Role */}
           <div>
-            <span className="text-[10px] tracking-[0.2em] text-[--muted] block mb-1">ROLE</span>
+            <span className="text-[10px] tracking-[0.2em] text-(--muted) block mb-1">ROLE</span>
             <div className="flex flex-col gap-0.5">
               {project.role.map((r) => (
-                <span key={r} className="text-metadata text-[--foreground] opacity-70">{r}</span>
+                <span key={r} className="text-metadata text-(--foreground) opacity-70">{r}</span>
               ))}
             </div>
           </div>
 
           {/* Type */}
           <div>
-            <span className="text-[10px] tracking-[0.2em] text-[--muted] block mb-1">TYPE</span>
-            <span className="text-metadata text-[--foreground] opacity-70">{project.category}</span>
+            <span className="text-[10px] tracking-[0.2em] text-(--muted) block mb-1">TYPE</span>
+            <span className="text-metadata text-(--foreground) opacity-70">{project.category}</span>
           </div>
 
           {/* Stack */}
           <div className="col-span-2 md:col-span-1">
-            <span className="text-[10px] tracking-[0.2em] text-[--muted] block mb-1">STACK</span>
-            <span className="text-metadata text-[--foreground] opacity-70">
+            <span className="text-[10px] tracking-[0.2em] text-(--muted) block mb-1">STACK</span>
+            <span className="text-metadata text-(--foreground) opacity-70">
               {project.technologies.slice(0, 3).join(" · ")}
               {project.technologies.length > 3 ? " ···" : ""}
             </span>
@@ -290,7 +306,7 @@ function ProjectItem({
             <span className={`text-[10px] tracking-[0.2em] ${statusColor}`}>
               ● {project.status}
             </span>
-            <span className="text-metadata text-[--muted] group-hover:text-[--foreground] transition-colors mt-1">
+            <span className="text-metadata text-(--muted) group-hover:text-(--foreground) transition-colors mt-1">
               VIEW →
             </span>
           </div>

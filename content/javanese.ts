@@ -34,6 +34,11 @@ export const javanese = {
   work: "ꦏꦂꦪ",
 
   /**
+   * "Pengalaman" = Experience
+   */
+  experience: "ꦥꦼꦔꦭꦩꦤ꧀",
+
+  /**
    * "Bab Aku" = About Me
    */
   about: "ꦧꦧ꧀ꦄꦏꦸ",
@@ -58,6 +63,14 @@ export const javanese = {
    * ꦄꦢꦶꦠ꧀ꦪ · ꦢꦶꦗꦶꦠꦭ꧀ = Aditya · Digital
    */
   signature: "ꦄꦢꦶꦠ꧀ꦪ · ꦢꦶꦗꦶꦠꦭ꧀",
+
+  /**
+   * Syllables stacked in the centre column of page heroes (read top → bottom).
+   * Semuanya disamakan bertuliskan: ꦄꦢꦶꦠꦾ (Aditya)
+   */
+  syllables: {
+    aditya: ["ꦄ", "ꦢꦶ", "ꦠꦾ"],
+  },
 } as const;
 
 export type Javanese = typeof javanese;

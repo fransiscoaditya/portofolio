@@ -19,7 +19,7 @@ export function IdentitySection() {
           {/* Photo */}
           <div className="col-span-4 md:col-span-4 md:col-start-1">
             <Reveal>
-              <div className="relative aspect-[3/4] overflow-hidden bg-[--surface] border border-[--border]">
+              <div className="relative aspect-[3/4] overflow-hidden bg-(--surface) border border-(--border)">
                 <Image
                   src="/images/PhotoAdit.png"
                   alt="Fransisco Aditya Widiyanto"
@@ -37,23 +37,23 @@ export function IdentitySection() {
             <Reveal delay={0.1}>
               <div className="flex flex-col gap-8">
                 <div>
-                  <span className="text-metadata text-[--muted] block mb-2">NAMA LENGKAP</span>
-                  <span className="text-display-sm font-display font-light text-[--foreground]">{siteConfig.fullName}</span>
+                  <span className="text-metadata text-(--muted) block mb-2">NAMA LENGKAP</span>
+                  <span className="text-display-sm font-display font-light text-(--foreground)">{siteConfig.fullName}</span>
                 </div>
                 <div>
-                  <span className="text-metadata text-[--muted] block mb-2">BERBASIS DI</span>
+                  <span className="text-metadata text-(--muted) block mb-2">BERBASIS DI</span>
                   <span className="text-body-md">{siteConfig.location}</span>
                 </div>
                 <div>
-                  <span className="text-metadata text-[--muted] block mb-2">TERSEDIA UNTUK</span>
+                  <span className="text-metadata text-(--muted) block mb-2">TERSEDIA UNTUK</span>
                   <span className="text-body-md text-[#c7a974]">{siteConfig.availability.join(", ")} Opportunities</span>
                 </div>
                 <div>
-                  <span className="text-metadata text-[--muted] block mb-2">PENDIDIKAN</span>
+                  <span className="text-metadata text-(--muted) block mb-2">PENDIDIKAN</span>
                   <span className="text-body-md">S1 Sistem Informasi — UNIKA Soegijapranata (IPK 3.82)</span>
                 </div>
                 <div>
-                  <span className="text-metadata text-[--muted] block mb-2">PENDEKATAN</span>
+                  <span className="text-metadata text-(--muted) block mb-2">PENDEKATAN</span>
                   <span className="text-body-md">Rekayasa Perangkat Lunak</span>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export function ExpertiseSection() {
   return (
     <section id="expertise" className="section-y" aria-labelledby="expertise-heading">
       <div className="container-editorial">
-        <div className="border-b border-[--border] pb-4 mb-12">
+        <div className="border-b border-(--border) pb-4 mb-12">
           <SectionLabel
             latin="KEAHLIAN"
             javanese={javanese.technology}
@@ -104,14 +104,14 @@ export function ExpertiseSection() {
           {expertiseClusters.map((cluster) => (
             <StaggerItem key={cluster.label}>
               <div>
-                <span className="text-[10px] tracking-[0.25em] text-[--muted] block mb-4">
+                <span className="text-[10px] tracking-[0.25em] text-(--muted) block mb-4">
                   {cluster.label}
                 </span>
                 <div className="flex flex-col gap-2">
                   {cluster.items.map((item) => (
                     <span
                       key={item}
-                      className="text-heading-lg font-display font-light text-[--muted] hover:text-[--foreground] transition-colors cursor-default"
+                      className="text-heading-lg font-display font-light text-(--muted) hover:text-(--foreground) transition-colors cursor-default"
                     >
                       {item}
                     </span>
@@ -131,7 +131,7 @@ export function TechSection() {
   return (
     <section id="technology" className="section-y" aria-labelledby="tech-heading">
       <div className="container-editorial">
-        <div className="border-b border-[--border] pb-4 mb-12">
+        <div className="border-b border-(--border) pb-4 mb-12">
           <SectionLabel
             latin="TEKNOLOGI"
             javanese={javanese.technology}
@@ -147,13 +147,13 @@ export function TechSection() {
             <StaggerItem key={cat.label}>
               <div className="grid grid-cols-4 md:grid-cols-12 gap-4">
                 <div className="col-span-4 md:col-span-2">
-                  <span className="text-metadata text-[--muted] tracking-[0.2em]">{cat.label}</span>
+                  <span className="text-metadata text-(--muted) tracking-[0.2em]">{cat.label}</span>
                 </div>
                 <div className="col-span-4 md:col-span-10 flex flex-wrap gap-x-6 gap-y-2">
                   {cat.items.map((item) => (
                     <span
                       key={item}
-                      className="text-heading-lg text-[--muted] hover:text-[--foreground] transition-colors cursor-default"
+                      className="text-heading-lg text-(--muted) hover:text-(--foreground) transition-colors cursor-default"
                     >
                       {item}
                     </span>
@@ -171,9 +171,9 @@ export function TechSection() {
 // ── BooksSection — 4 Buku Ber-HAKI ───────────────────────────────────────────
 export function BooksSection() {
   return (
-    <section id="publications" className="section-y border-t border-[--border]" aria-labelledby="books-heading">
+    <section id="publications" className="section-y border-t border-(--border)" aria-labelledby="books-heading">
       <div className="container-editorial">
-        <div className="border-b border-[--border] pb-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-2">
+        <div className="border-b border-(--border) pb-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-2">
           <div>
             <SectionLabel
               latin="PUBLIKASI & HAKI"
@@ -184,7 +184,7 @@ export function BooksSection() {
               Buku Ber-HAKI
             </h2>
           </div>
-          <span className="text-metadata text-[--muted]">
+          <span className="text-metadata text-(--muted)">
             4 BUKU TERDAFTAR HAK CIPTA (GOOGLE BOOKS)
           </span>
         </div>
@@ -196,23 +196,23 @@ export function BooksSection() {
                 href={book.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block border-b border-[--border] py-8 md:py-10 transition-colors hover:border-[--foreground]"
+                className="group block border-b border-(--border) py-8 md:py-10 transition-colors hover:border-(--foreground)"
               >
                 <div className="grid grid-cols-4 md:grid-cols-12 gap-4 items-baseline">
                   {/* Index + Year */}
                   <div className="col-span-4 md:col-span-2 flex items-baseline gap-4">
-                    <span className="text-metadata text-[--muted] group-hover:text-[--foreground] transition-colors">
+                    <span className="text-metadata text-(--muted) group-hover:text-(--foreground) transition-colors">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <span className="text-metadata text-[--muted] font-body">{book.year}</span>
+                    <span className="text-metadata text-(--muted) font-body">{book.year}</span>
                   </div>
 
                   {/* Title & Description */}
                   <div className="col-span-4 md:col-span-8">
-                    <h3 className="text-heading-lg text-[--foreground] group-hover:text-[#c7a974] transition-colors mb-2">
+                    <h3 className="text-heading-lg text-(--foreground) group-hover:text-[#c7a974] transition-colors mb-2">
                       {book.title}
                     </h3>
-                    <p className="text-body-sm text-[--muted]">{book.description}</p>
+                    <p className="text-body-sm text-(--muted)">{book.description}</p>
                   </div>
 
                   {/* Badge & Link */}
@@ -220,7 +220,7 @@ export function BooksSection() {
                     <span className="text-[10px] tracking-[0.15em] text-[#c7a974] border border-[#c7a974]/30 px-2 py-0.5 uppercase">
                       {book.haki}
                     </span>
-                    <span className="text-metadata text-[--muted] group-hover:text-[--foreground] transition-colors hidden md:inline">
+                    <span className="text-metadata text-(--muted) group-hover:text-(--foreground) transition-colors hidden md:inline">
                       LIHAT ↗
                     </span>
                   </div>
@@ -237,9 +237,9 @@ export function BooksSection() {
 // ── ExperienceSection ─────────────────────────────────────────────────────────
 export function ExperienceSection() {
   return (
-    <section id="experience" className="section-y border-t border-[--border]" aria-labelledby="exp-heading">
+    <section id="experience" className="section-y border-t border-(--border)" aria-labelledby="exp-heading">
       <div className="container-editorial">
-        <div className="border-b border-[--border] pb-4 mb-12">
+        <div className="border-b border-(--border) pb-4 mb-12">
           <SectionLabel
             latin="PENGALAMAN & PROYEK"
             javanese={javanese.about}
@@ -253,24 +253,24 @@ export function ExperienceSection() {
         <Stagger staggerChildren={0.08} className="flex flex-col gap-0">
           {experiences.map((exp) => (
             <StaggerItem key={exp.title + exp.period}>
-              <div className="grid grid-cols-4 md:grid-cols-12 gap-4 border-b border-[--border] py-8 md:py-10">
+              <div className="grid grid-cols-4 md:grid-cols-12 gap-4 border-b border-(--border) py-8 md:py-10">
                 {/* Period */}
                 <div className="col-span-4 md:col-span-3">
-                  <span className="text-metadata text-[--muted] block mb-1">{exp.period}</span>
-                  <span className="text-[10px] tracking-[0.15em] text-[--muted] border border-[--border] px-2 py-0.5 uppercase inline-block">
+                  <span className="text-metadata text-(--muted) block mb-1">{exp.period}</span>
+                  <span className="text-[10px] tracking-[0.15em] text-(--muted) border border-(--border) px-2 py-0.5 uppercase inline-block">
                     {exp.type}
                   </span>
                 </div>
 
                 {/* Content */}
                 <div className="col-span-4 md:col-span-9">
-                  <h3 className="text-heading-lg text-[--foreground] mb-1">{exp.title}</h3>
+                  <h3 className="text-heading-lg text-(--foreground) mb-1">{exp.title}</h3>
                   <p className="text-body-sm text-[#c7a974] mb-3">{exp.organization}</p>
                   
-                  <ul className="flex flex-col gap-1.5 list-disc list-inside text-body-sm text-[--muted]">
+                  <ul className="flex flex-col gap-1.5 list-disc list-inside text-body-sm text-(--muted)">
                     {exp.responsibilities.map((resp) => (
                       <li key={resp} className="leading-relaxed">
-                        <span className="text-[--muted-light]">{resp}</span>
+                        <span className="text-(--muted-light)">{resp}</span>
                       </li>
                     ))}
                   </ul>
@@ -281,18 +281,18 @@ export function ExperienceSection() {
         </Stagger>
 
         {/* Organisasi Subsection */}
-        <div className="mt-16 pt-8 border-t border-[--border]">
-          <h3 className="text-metadata text-[--muted] tracking-[0.2em] mb-8">ORGANISASI KAMPUS</h3>
+        <div className="mt-16 pt-8 border-t border-(--border)">
+          <h3 className="text-metadata text-(--muted) tracking-[0.2em] mb-8">ORGANISASI KAMPUS</h3>
           <div className="flex flex-col gap-0">
             {organizations.map((org) => (
-              <div key={org.organization} className="grid grid-cols-4 md:grid-cols-12 gap-4 py-6 border-b border-[--border]">
+              <div key={org.organization} className="grid grid-cols-4 md:grid-cols-12 gap-4 py-6 border-b border-(--border)">
                 <div className="col-span-4 md:col-span-3">
-                  <span className="text-metadata text-[--muted]">{org.period}</span>
+                  <span className="text-metadata text-(--muted)">{org.period}</span>
                 </div>
                 <div className="col-span-4 md:col-span-9">
-                  <h4 className="text-heading-lg text-[--foreground] mb-1">{org.role}</h4>
+                  <h4 className="text-heading-lg text-(--foreground) mb-1">{org.role}</h4>
                   <p className="text-body-sm text-[#c7a974] mb-2">{org.organization}</p>
-                  <p className="text-body-sm text-[--muted]">{org.description}</p>
+                  <p className="text-body-sm text-(--muted)">{org.description}</p>
                 </div>
               </div>
             ))}
@@ -306,9 +306,9 @@ export function ExperienceSection() {
 // ── EducationSection ──────────────────────────────────────────────────────────
 export function EducationSection() {
   return (
-    <section id="education" className="section-y border-t border-[--border]" aria-labelledby="edu-heading">
+    <section id="education" className="section-y border-t border-(--border)" aria-labelledby="edu-heading">
       <div className="container-editorial">
-        <div className="border-b border-[--border] pb-4 mb-12">
+        <div className="border-b border-(--border) pb-4 mb-12">
           <SectionLabel
             latin="PENDIDIKAN"
             javanese={javanese.about}
@@ -322,20 +322,20 @@ export function EducationSection() {
         <Stagger staggerChildren={0.1} className="flex flex-col gap-0">
           {education.map((edu) => (
             <StaggerItem key={edu.institution}>
-              <div className="grid grid-cols-4 md:grid-cols-12 gap-4 border-b border-[--border] py-8">
+              <div className="grid grid-cols-4 md:grid-cols-12 gap-4 border-b border-(--border) py-8">
                 <div className="col-span-4 md:col-span-3">
-                  <span className="text-metadata text-[--muted]">{edu.period}</span>
+                  <span className="text-metadata text-(--muted)">{edu.period}</span>
                 </div>
                 <div className="col-span-4 md:col-span-9">
                   <div className="flex flex-wrap items-baseline gap-3 mb-1">
-                    <h3 className="text-heading-lg text-[--foreground]">{edu.institution}</h3>
+                    <h3 className="text-heading-lg text-(--foreground)">{edu.institution}</h3>
                     <span className="text-metadata text-[#c7a974] border border-[#c7a974]/30 px-2 py-0.5">
                       {edu.gpa}
                     </span>
                   </div>
-                  <p className="text-body-sm text-[--muted] mb-2">{edu.degree} — {edu.field}</p>
+                  <p className="text-body-sm text-(--muted) mb-2">{edu.degree} — {edu.field}</p>
                   {edu.note && (
-                    <p className="text-metadata text-[--muted] opacity-60">{edu.note}</p>
+                    <p className="text-metadata text-(--muted) opacity-60">{edu.note}</p>
                   )}
                 </div>
               </div>
@@ -351,9 +351,9 @@ export function EducationSection() {
 export function CurrentlySection() {
   const { currently } = siteConfig;
   return (
-    <section id="currently" className="section-y border-t border-[--border]" aria-labelledby="currently-heading">
+    <section id="currently" className="section-y border-t border-(--border)" aria-labelledby="currently-heading">
       <div className="container-editorial">
-        <div className="border-b border-[--border] pb-4 mb-12">
+        <div className="border-b border-(--border) pb-4 mb-12">
           <SectionLabel
             latin="SAAT INI"
             javanese={javanese.work}
@@ -367,25 +367,25 @@ export function CurrentlySection() {
         <Stagger staggerChildren={0.1} className="flex flex-col gap-8 md:gap-12">
           <StaggerItem>
             <div className="grid grid-cols-4 md:grid-cols-12 gap-4 items-baseline">
-              <span className="col-span-4 md:col-span-2 text-metadata text-[--muted] tracking-[0.2em]">MEMBANGUN</span>
-              <p className="col-span-4 md:col-span-10 text-heading-lg text-[--foreground]">{currently.building}</p>
+              <span className="col-span-4 md:col-span-2 text-metadata text-(--muted) tracking-[0.2em]">MEMBANGUN</span>
+              <p className="col-span-4 md:col-span-10 text-heading-lg text-(--foreground)">{currently.building}</p>
             </div>
           </StaggerItem>
           <StaggerItem>
             <div className="grid grid-cols-4 md:grid-cols-12 gap-4 items-baseline">
-              <span className="col-span-4 md:col-span-2 text-metadata text-[--muted] tracking-[0.2em]">BELAJAR</span>
-              <p className="col-span-4 md:col-span-10 text-heading-lg text-[--foreground]">{currently.learning}</p>
+              <span className="col-span-4 md:col-span-2 text-metadata text-(--muted) tracking-[0.2em]">BELAJAR</span>
+              <p className="col-span-4 md:col-span-10 text-heading-lg text-(--foreground)">{currently.learning}</p>
             </div>
           </StaggerItem>
           <StaggerItem>
             <div className="grid grid-cols-4 md:grid-cols-12 gap-4 items-baseline">
-              <span className="col-span-4 md:col-span-2 text-metadata text-[--muted] tracking-[0.2em]">MENJELAJAH</span>
-              <p className="col-span-4 md:col-span-10 text-heading-lg text-[--foreground]">{currently.exploring}</p>
+              <span className="col-span-4 md:col-span-2 text-metadata text-(--muted) tracking-[0.2em]">MENJELAJAH</span>
+              <p className="col-span-4 md:col-span-10 text-heading-lg text-(--foreground)">{currently.exploring}</p>
             </div>
           </StaggerItem>
           <StaggerItem>
             <div className="grid grid-cols-4 md:grid-cols-12 gap-4 items-baseline">
-              <span className="col-span-4 md:col-span-2 text-metadata text-[--muted] tracking-[0.2em]">MENCARI</span>
+              <span className="col-span-4 md:col-span-2 text-metadata text-(--muted) tracking-[0.2em]">MENCARI</span>
               <p className="col-span-4 md:col-span-10 text-heading-lg text-[#c7a974]">
                 Software Engineering / Web &amp; Mobile Developer Opportunities (Full-Time)
               </p>
@@ -393,7 +393,7 @@ export function CurrentlySection() {
           </StaggerItem>
           <StaggerItem>
             <div className="grid grid-cols-4 md:grid-cols-12 gap-4 items-baseline">
-              <span className="col-span-4 md:col-span-2 text-metadata text-[--muted] tracking-[0.2em]">TERSEDIA</span>
+              <span className="col-span-4 md:col-span-2 text-metadata text-(--muted) tracking-[0.2em]">TERSEDIA</span>
               <div className="col-span-4 md:col-span-10 flex flex-wrap gap-2">
                 {siteConfig.availability.map((tag) => (
                   <span key={tag} className="text-heading-lg text-[#c7a974]">{tag}</span>

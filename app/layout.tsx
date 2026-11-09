@@ -1,9 +1,41 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Anton, Inter, Space_Mono, Noto_Sans_Javanese } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/navigation/Navigation";
 import { CustomCursor } from "@/components/cursor/CustomCursor";
 import { LenisProvider } from "@/components/motion/LenisProvider";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { siteConfig } from "@/content/site";
+
+/* Typography system — Display / Body / Meta / Accent */
+const fontDisplay = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+});
+const fontBody = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+const fontMeta = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+  display: "swap",
+});
+const fontJavanese = Noto_Sans_Javanese({
+  weight: ["400", "700"],
+  subsets: ["javanese"],
+  variable: "--font-noto-javanese",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -56,15 +88,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html
+      lang="id"
+      className={`overflow-x-hidden ${fontDisplay.variable} ${fontBody.variable} ${fontMeta.variable} ${fontJavanese.variable}`}
+    >
       <head>
-        {/* Preconnect to Google Fonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         {/* Structured data */}
         <script
           type="application/ld+json"
@@ -79,6 +107,7 @@ export default function RootLayout({
                 siteConfig.github || "",
                 siteConfig.linkedin || "",
                 siteConfig.instagram || "",
+                siteConfig.tiktok || "",
               ].filter((s) => s.length > 0),
               jobTitle: `${siteConfig.tagline} / ${siteConfig.tagline2}`,
             }),
@@ -86,6 +115,14 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased overflow-x-hidden">
+        {/* Skip link — keyboard accessibility */}
+        <a href="#main" className="skip-link">
+          Lewati ke konten
+        </a>
+
+        {/* Scroll progress */}
+        <ScrollProgress />
+
         {/* Film grain overlay */}
         <div className="film-grain" aria-hidden="true" />
         
@@ -99,7 +136,7 @@ export default function RootLayout({
         <Navigation />
 
         {/* Main content */}
-        <main>{children}</main>
+        <main id="main">{children}</main>
       </body>
     </html>
   );

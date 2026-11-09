@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { 
-  IdentitySection,
-  ExpertiseSection,
-  TechSection,
-  BooksSection,
+import { PageHero } from "@/components/hero/PageHero";
+import {
   ExperienceSection,
   EducationSection,
-  CurrentlySection
+  BooksSection,
+  ExpertiseSection,
+  TechSection,
+  CurrentlySection,
 } from "@/components/info/InfoSection";
 import { Footer } from "@/components/footer/Footer";
+import { javanese } from "@/content/javanese";
 import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -19,17 +20,20 @@ export const metadata: Metadata = {
 export default function InfoPage() {
   return (
     <>
-      <div className="pt-32">
-        <IdentitySection />
-        <ExpertiseSection />
-        <TechSection />
-        <BooksSection />
-        <ExperienceSection />
-        <EducationSection />
-        <CurrentlySection />
-      </div>
+      <PageHero
+        word="INFO"
+        accent={javanese.syllables.aditya}
+        video="/images/Anime.mp4"
+        meta="[PENGALAMAN · PENDIDIKAN · BUKU]"
+        metaRight={`[${siteConfig.year}]`}
+      />
+      <ExperienceSection />
+      <EducationSection />
+      <BooksSection />
+      <ExpertiseSection />
+      <TechSection />
+      <CurrentlySection />
       <Footer />
     </>
   );
 }
-

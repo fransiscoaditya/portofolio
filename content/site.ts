@@ -24,11 +24,12 @@ export const siteConfig = {
     exploring: "AI-assisted Development · Cloud Infrastructure",
   },
 
-  // Contact
+  // Contact & Social Profiles
   email: "fransiscowidiyanto@gmail.com",
   github: "https://github.com/fransiscoaditya",
-  linkedin: "https://www.linkedin.com/in/fransisco-aditya-82928a267/",
+  linkedin: "https://www.linkedin.com/in/fransisco-aditya-widiyanto-82928a267",
   instagram: "https://www.instagram.com/adit_ya_kan/",
+  tiktok: "https://www.tiktok.com/@fawyakan",
   twitter: "",
 
   // Resume PDF
@@ -46,4 +47,3 @@ export const siteConfig = {
 } as const;
 
 export type SiteConfig = typeof siteConfig;
-
